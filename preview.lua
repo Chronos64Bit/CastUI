@@ -123,8 +123,8 @@ SettingsTab:AddSection({ Title = "Appearance" })
 
 SettingsTab:AddDropdown({
 	Title = "Theme Preset",
-	Options = { "Modern Glass (Default)", "Midnight Violet", "Emerald Frost" },
-	Default = "Modern Glass (Default)",
+	Options = { "Monochrome (Default)", "Midnight Violet", "Emerald Frost" },
+	Default = "Monochrome (Default)",
 	Callback = function(themeName)
 		CastUI.SetTheme(themeName)
 	end

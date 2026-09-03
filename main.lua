@@ -243,32 +243,32 @@ return (function()
 		local listeners = {}
 		
 		Theme.Presets = {
-			["Modern Glass (Default)"] = {
-				Background = Color3.fromRGB(13, 16, 23),
+			["Monochrome (Default)"] = {
+				Background = Color3.fromRGB(10, 10, 11),
 				BackgroundTransparency = 0.12,
-				GlassPanel = Color3.fromRGB(20, 24, 35),
+				GlassPanel = Color3.fromRGB(20, 20, 22),
 				GlassPanelTransparency = 0.35,
-				GlassHover = Color3.fromRGB(32, 38, 55),
-				GlassActive = Color3.fromRGB(42, 50, 72),
-				
+				GlassHover = Color3.fromRGB(32, 32, 35),
+				GlassActive = Color3.fromRGB(45, 45, 49),
+		
 				Border = Color3.fromRGB(255, 255, 255),
 				BorderTransparency = 0.88,
-				BorderFocus = Color3.fromRGB(0, 209, 255),
+				BorderFocus = Color3.fromRGB(235, 235, 240),
 				BorderFocusTransparency = 0.4,
 		
-				Accent = Color3.fromRGB(0, 209, 255),
-				AccentGlow = Color3.fromRGB(0, 168, 255),
-				AccentSecondary = Color3.fromRGB(99, 102, 241),
+				Accent = Color3.fromRGB(235, 235, 240),
+				AccentGlow = Color3.fromRGB(200, 200, 208),
+				AccentSecondary = Color3.fromRGB(140, 140, 148),
 		
-				TextPrimary = Color3.fromRGB(245, 247, 252),
-				TextSecondary = Color3.fromRGB(150, 158, 178),
-				TextMuted = Color3.fromRGB(98, 105, 125),
+				TextPrimary = Color3.fromRGB(245, 245, 247),
+				TextSecondary = Color3.fromRGB(150, 150, 158),
+				TextMuted = Color3.fromRGB(95, 95, 102),
 		
-				Success = Color3.fromRGB(46, 213, 115),
-				Danger = Color3.fromRGB(255, 71, 87),
-				Warning = Color3.fromRGB(255, 165, 2),
+				Success = Color3.fromRGB(110, 200, 150),
+				Danger = Color3.fromRGB(220, 100, 100),
+				Warning = Color3.fromRGB(210, 180, 120),
 		
-				CornerRadius = 10,
+				CornerRadius = 8,
 				FontRegular = Enum.Font.Gotham,
 				FontMedium = Enum.Font.GothamMedium,
 				FontBold = Enum.Font.GothamBold,
@@ -335,7 +335,7 @@ return (function()
 			end
 		end
 		
-		applyTheme(Theme.Presets["Modern Glass (Default)"])
+		applyTheme(Theme.Presets["Monochrome (Default)"])
 		
 		function Theme.SetTheme(theme)
 			local target = if type(theme) == "string" then Theme.Presets[theme] else theme

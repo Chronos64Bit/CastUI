@@ -1,12 +1,15 @@
 --[[
 	CastUI • Local UI Preview
-	Loads the locally-hosted dist bundle and shows every element type.
-	Every callback below only prints or shows a notification — nothing else.
+	Loads the locally-hosted dist bundle, gates it behind the key system, then
+	shows every element type. Every callback below only prints or shows a
+	notification — nothing else.
 ]]
 
 local CastUI = loadstring(game:HttpGet("http://localhost:8787/CastUI.lua"))()
 
 CastUI.SetConfigFolder("CastUI_Preview")
+
+local function BuildUI()
 
 local Window = CastUI.CreateWindow({
 	Title = "CastUI Preview",
@@ -168,3 +171,13 @@ SettingsTab:AddButton({
 })
 
 print("[CastUI Preview] Ready.")
+
+end
+
+CastUI.PromptKey({
+	Title = "CastUI Preview",
+	Subtitle = "Enter the preview key to continue",
+	Key = "test",
+	SaveKey = false,
+	OnSuccess = BuildUI
+})

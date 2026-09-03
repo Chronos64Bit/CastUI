@@ -50,8 +50,8 @@ function KeySystem.Prompt(parentGui: Instance, config: {
 		BackgroundColor3 = currentTheme.Background,
 		BackgroundTransparency = 0.12,
 		BorderSizePixel = 0,
-		Position = UDim2.new(0.5, -170, 0.5, -110),
-		Size = UDim2.new(0, 340, 0, 220),
+		Position = UDim2.new(0.5, -170, 0.5, -100),
+		Size = UDim2.new(0, 340, 0, 200),
 		ClipsDescendants = true,
 		Parent = overlay
 	})
@@ -62,23 +62,10 @@ function KeySystem.Prompt(parentGui: Instance, config: {
 
 	Drag.MakeDraggable(modal)
 
-	-- Branding Header
-	local brandLabel = Creator.New("TextLabel", {
-		Name = "Brand",
-		BackgroundTransparency = 1,
-		Size = UDim2.new(1, 0, 0, 14),
-		Font = currentTheme.FontBold,
-		Text = "CASTUI • THE VENTRYX COMPANY",
-		TextColor3 = currentTheme.Accent,
-		TextSize = 10,
-		TextXAlignment = Enum.TextXAlignment.Center,
-		Parent = modal
-	})
-
 	local titleLabel = Creator.New("TextLabel", {
 		Name = "Title",
 		BackgroundTransparency = 1,
-		Position = UDim2.new(0, 0, 0, 18),
+		Position = UDim2.new(0, 0, 0, 0),
 		Size = UDim2.new(1, 0, 0, 24),
 		Font = currentTheme.FontBold,
 		Text = config.Title or "Key Verification",
@@ -91,7 +78,7 @@ function KeySystem.Prompt(parentGui: Instance, config: {
 	local subLabel = Creator.New("TextLabel", {
 		Name = "Subtitle",
 		BackgroundTransparency = 1,
-		Position = UDim2.new(0, 0, 0, 44),
+		Position = UDim2.new(0, 0, 0, 26),
 		Size = UDim2.new(1, 0, 0, 20),
 		Font = currentTheme.FontRegular,
 		Text = config.Subtitle or "Enter your access key to continue",
@@ -106,7 +93,7 @@ function KeySystem.Prompt(parentGui: Instance, config: {
 		Name = "KeyInput",
 		BackgroundColor3 = currentTheme.GlassPanel,
 		BackgroundTransparency = 0.3,
-		Position = UDim2.new(0, 0, 0, 76),
+		Position = UDim2.new(0, 0, 0, 58),
 		Size = UDim2.new(1, 0, 0, 38),
 		Font = currentTheme.FontRegular,
 		PlaceholderText = "Paste key here...",
@@ -123,7 +110,7 @@ function KeySystem.Prompt(parentGui: Instance, config: {
 	local errorLabel = Creator.New("TextLabel", {
 		Name = "ErrorMsg",
 		BackgroundTransparency = 1,
-		Position = UDim2.new(0, 0, 0, 118),
+		Position = UDim2.new(0, 0, 0, 100),
 		Size = UDim2.new(1, 0, 0, 16),
 		Font = currentTheme.FontRegular,
 		Text = "",

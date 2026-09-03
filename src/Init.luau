@@ -53,7 +53,9 @@ function CastUI.CreateWindow(config: {
 	Size: UDim2?,
 	ToggleKey: Enum.KeyCode?,
 	MobileButton: boolean?,
-	OnClose: (() -> ())?
+	OnClose: (() -> ())?,
+	PromoNotifications: boolean?,
+	PromoInterval: number?
 })
 	local gui = getRootGui()
 	return Window.New(gui, config or {})

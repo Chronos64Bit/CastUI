@@ -21,7 +21,9 @@ function Window.New(parentGui: Instance, config: {
 	Size: UDim2?,
 	ToggleKey: Enum.KeyCode?,
 	MobileButton: boolean?,
-	OnClose: (() -> ())?
+	OnClose: (() -> ())?,
+	PromoNotifications: boolean?,
+	PromoInterval: number?
 })
 	local currentTheme = Theme.Current
 	local toggleKey = config.ToggleKey or Enum.KeyCode.RightControl
@@ -73,24 +75,11 @@ function Window.New(parentGui: Instance, config: {
 
 	Drag.MakeDraggable(topBar, mainFrame)
 
-	-- Brand & Titles
-	local brandTag = Creator.New("TextLabel", {
-		Name = "BrandTag",
-		BackgroundTransparency = 1,
-		Position = UDim2.new(0, 16, 0, 8),
-		Size = UDim2.new(0, 300, 0, 12),
-		Font = currentTheme.FontBold,
-		Text = "CASTUI • THE VENTRYX COMPANY",
-		TextColor3 = currentTheme.Accent,
-		TextSize = 9,
-		TextXAlignment = Enum.TextXAlignment.Left,
-		Parent = topBar
-	})
-
+	-- Title
 	local titleLabel = Creator.New("TextLabel", {
 		Name = "Title",
 		BackgroundTransparency = 1,
-		Position = UDim2.new(0, 16, 0, 20),
+		Position = UDim2.new(0, 16, 0, 13),
 		Size = UDim2.new(0, 300, 0, 20),
 		Font = currentTheme.FontBold,
 		Text = config.Title or "CastUI Suite",
@@ -104,7 +93,7 @@ function Window.New(parentGui: Instance, config: {
 		local subLabel = Creator.New("TextLabel", {
 			Name = "Subtitle",
 			BackgroundTransparency = 1,
-			Position = UDim2.new(0, 20 + titleLabel.TextBounds.X, 0, 22),
+			Position = UDim2.new(0, 20 + titleLabel.TextBounds.X, 0, 15),
 			Size = UDim2.new(0, 200, 0, 18),
 			Font = currentTheme.FontRegular,
 			Text = "|  " .. config.SubTitle,
@@ -116,33 +105,45 @@ function Window.New(parentGui: Instance, config: {
 	end
 
 	-- Window Control Buttons (Minimize / Close)
+	-- Plain glyph TextButtons: no external image asset, so they always render
+	-- and hover feedback makes it obvious they're clickable.
 	local controlsHolder = Creator.New("Frame", {
 		Name = "Controls",
 		BackgroundTransparency = 1,
-		Position = UDim2.new(1, -74, 0, 11),
-		Size = UDim2.new(0, 60, 0, 24),
+		Position = UDim2.new(1, -72, 0, 9),
+		Size = UDim2.new(0, 56, 0, 28),
 		Parent = topBar
 	})
 
-	local minimizeBtn = Creator.New("ImageButton", {
-		Name = "Minimize",
-		BackgroundTransparency = 1,
-		Position = UDim2.new(0, 4, 0.5, -8),
-		Size = UDim2.new(0, 16, 0, 16),
-		Image = Icons.Get("minus") or Icons.Get("chevron-down"),
-		ImageColor3 = currentTheme.TextSecondary,
-		Parent = controlsHolder
-	})
+	local function makeControlButton(name: string, glyph: string, xOffset: number)
+		local btn = Creator.New("TextButton", {
+			Name = name,
+			BackgroundColor3 = currentTheme.GlassPanel,
+			BackgroundTransparency = 1,
+			BorderSizePixel = 0,
+			Position = UDim2.new(0, xOffset, 0, 0),
+			Size = UDim2.new(0, 26, 0, 26),
+			Font = currentTheme.FontMedium,
+			Text = glyph,
+			TextColor3 = currentTheme.TextSecondary,
+			TextSize = 15,
+			AutoButtonColor = false,
+			Parent = controlsHolder
+		})
+		Creator.Round(btn, 6)
 
-	local closeBtn = Creator.New("ImageButton", {
-		Name = "Close",
-		BackgroundTransparency = 1,
-		Position = UDim2.new(1, -20, 0.5, -8),
-		Size = UDim2.new(0, 16, 0, 16),
-		Image = Icons.Get("x"),
-		ImageColor3 = currentTheme.TextSecondary,
-		Parent = controlsHolder
-	})
+		btn.MouseEnter:Connect(function()
+			Tween.Play(btn, "Fast", { BackgroundTransparency = 0.4, TextColor3 = Theme.Current.TextPrimary })
+		end)
+		btn.MouseLeave:Connect(function()
+			Tween.Play(btn, "Fast", { BackgroundTransparency = 1, TextColor3 = Theme.Current.TextSecondary })
+		end)
+
+		return btn
+	end
+
+	local minimizeBtn = makeControlButton("Minimize", "\226\128\147", 0) -- –
+	local closeBtn = makeControlButton("Close", "\226\156\149", 30) -- ✕
 
 	-- Body Area
 	local bodyFrame = Creator.New("Frame", {
@@ -194,6 +195,79 @@ function Window.New(parentGui: Instance, config: {
 		ClipsDescendants = true,
 		Parent = bodyFrame
 	})
+
+	-- Intro Splash: briefly covers the window on first load
+	local splash = Creator.New("Frame", {
+		Name = "Splash",
+		BackgroundColor3 = currentTheme.Background,
+		BackgroundTransparency = 0,
+		BorderSizePixel = 0,
+		Size = UDim2.new(1, 0, 1, 0),
+		ZIndex = 20,
+		Parent = mainFrame
+	})
+	Creator.Round(splash, 12)
+
+	local splashTitle = Creator.New("TextLabel", {
+		Name = "SplashTitle",
+		BackgroundTransparency = 1,
+		Position = UDim2.new(0, 0, 0.5, -26),
+		Size = UDim2.new(1, 0, 0, 28),
+		Font = currentTheme.FontBold,
+		Text = "CastUI",
+		TextColor3 = currentTheme.TextPrimary,
+		TextSize = 24,
+		TextXAlignment = Enum.TextXAlignment.Center,
+		ZIndex = 21,
+		Parent = splash
+	})
+
+	local splashSub = Creator.New("TextLabel", {
+		Name = "SplashSubtitle",
+		BackgroundTransparency = 1,
+		Position = UDim2.new(0, 0, 0.5, 4),
+		Size = UDim2.new(1, 0, 0, 16),
+		Font = currentTheme.FontRegular,
+		Text = "Loading interface...",
+		TextColor3 = currentTheme.TextMuted,
+		TextSize = 11,
+		TextXAlignment = Enum.TextXAlignment.Center,
+		ZIndex = 21,
+		Parent = splash
+	})
+
+	local splashBarTrack = Creator.New("Frame", {
+		Name = "SplashBarTrack",
+		BackgroundColor3 = currentTheme.GlassPanel,
+		BorderSizePixel = 0,
+		Position = UDim2.new(0.5, -60, 0.5, 28),
+		Size = UDim2.new(0, 120, 0, 3),
+		ZIndex = 21,
+		Parent = splash
+	})
+	Creator.Round(splashBarTrack, 2)
+
+	local splashBarFill = Creator.New("Frame", {
+		Name = "SplashBarFill",
+		BackgroundColor3 = currentTheme.Accent,
+		BorderSizePixel = 0,
+		Size = UDim2.new(0, 0, 1, 0),
+		ZIndex = 22,
+		Parent = splashBarTrack
+	})
+	Creator.Round(splashBarFill, 2)
+
+	Tween.Play(splashBarFill, TweenInfo.new(0.9, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), { Size = UDim2.new(1, 0, 1, 0) })
+
+	task.delay(1.1, function()
+		Tween.Play(splash, "Fast", { BackgroundTransparency = 1 })
+		Tween.Play(splashTitle, "Fast", { TextTransparency = 1 })
+		Tween.Play(splashSub, "Fast", { TextTransparency = 1 })
+		Tween.Play(splashBarTrack, "Fast", { BackgroundTransparency = 1 })
+		task.delay(0.2, function()
+			splash:Destroy()
+		end)
+	end)
 
 	-- Toggle Visibility Logic
 	local function setVisibility(state: boolean)
@@ -306,6 +380,23 @@ function Window.New(parentGui: Instance, config: {
 		mainFrame:Destroy()
 	end
 
+	-- Occasional bottom-right nudge notification
+	if config.PromoNotifications ~= false then
+		task.spawn(function()
+			task.wait(25)
+			while mainFrame.Parent do
+				if isVisible then
+					Notification.Notify({
+						Title = "Enjoying CastUI?",
+						Content = "Use it in your own script today.",
+						Duration = 6
+					})
+				end
+				task.wait(config.PromoInterval or 120)
+			end
+		end)
+	end
+
 	Theme.OnThemeChanged(function(t)
 		mainFrame.BackgroundColor3 = t.Background
 		mainFrame.BackgroundTransparency = t.BackgroundTransparency
@@ -313,7 +404,6 @@ function Window.New(parentGui: Instance, config: {
 		windowStroke.Transparency = t.BorderTransparency
 		ambientGlow.ImageColor3 = t.Accent
 		topBar.BackgroundColor3 = t.GlassPanel
-		brandTag.TextColor3 = t.Accent
 		titleLabel.TextColor3 = t.TextPrimary
 		sidebar.BackgroundColor3 = t.GlassPanel
 		sidebarScroll.ScrollBarImageColor3 = t.Accent

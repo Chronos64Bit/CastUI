@@ -55,7 +55,7 @@ function KeySystem.Prompt(parentGui: Instance, config: {
 		Parent = overlay
 	})
 
-	Creator.Round(modal, 12)
+	Creator.Round(modal, 10)
 	local stroke = Creator.Stroke(modal, currentTheme.Border, currentTheme.BorderTransparency, 1)
 	Creator.Padding(modal, 16, 16, 18, 18)
 
@@ -103,7 +103,7 @@ function KeySystem.Prompt(parentGui: Instance, config: {
 		ClearTextOnFocus = false,
 		Parent = modal
 	})
-	Creator.Round(keyBox, 8)
+	Creator.Round(keyBox, 5)
 	local boxStroke = Creator.Stroke(keyBox, currentTheme.Border, 0.8, 1)
 
 	local errorLabel = Creator.New("TextLabel", {
@@ -141,7 +141,7 @@ function KeySystem.Prompt(parentGui: Instance, config: {
 		AutoButtonColor = false,
 		Parent = btnContainer
 	})
-	Creator.Round(verifyBtn, 8)
+	Creator.Round(verifyBtn, 5)
 
 	if config.GetKeyLink then
 		local getBtn = Creator.New("TextButton", {
@@ -157,7 +157,7 @@ function KeySystem.Prompt(parentGui: Instance, config: {
 			AutoButtonColor = false,
 			Parent = btnContainer
 		})
-		Creator.Round(getBtn, 8)
+		Creator.Round(getBtn, 5)
 		Creator.Stroke(getBtn, currentTheme.Border, 0.8, 1)
 
 		getBtn.MouseButton1Click:Connect(function()

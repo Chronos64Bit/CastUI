@@ -31,7 +31,7 @@ function Toggle.New(parent: Instance, cfg: {
 		Parent = parent
 	})
 
-	Creator.Round(btn, 8)
+	Creator.Round(btn, 6)
 	local stroke = Creator.Stroke(btn, theme.Border, theme.BorderTransparency, 1)
 	Creator.Padding(btn, 0, 0, 12, 12)
 
@@ -64,9 +64,13 @@ function Toggle.New(parent: Instance, cfg: {
 		})
 	end
 
+	local function thumbColor(s: boolean): Color3
+		return s and Color3.fromRGB(15, 15, 16) or Color3.fromRGB(237, 237, 239)
+	end
+
 	local track = Creator.New("Frame", {
 		Name = "Track",
-		BackgroundColor3 = state and theme.Accent or Color3.fromRGB(40, 45, 60),
+		BackgroundColor3 = state and theme.Accent or theme.GlassActive,
 		BackgroundTransparency = state and 0.1 or 0.5,
 		BorderSizePixel = 0,
 		Position = UDim2.new(1, -42, 0.5, -11),
@@ -78,7 +82,7 @@ function Toggle.New(parent: Instance, cfg: {
 
 	local thumb = Creator.New("Frame", {
 		Name = "Thumb",
-		BackgroundColor3 = Color3.fromRGB(255, 255, 255),
+		BackgroundColor3 = thumbColor(state),
 		BorderSizePixel = 0,
 		Position = state and UDim2.new(1, -19, 0.5, -8) or UDim2.new(0, 3, 0.5, -8),
 		Size = UDim2.new(0, 16, 0, 16),
@@ -88,20 +92,22 @@ function Toggle.New(parent: Instance, cfg: {
 
 	local function refresh(animate: boolean)
 		local t = Theme.Current
-		local bg = state and t.Accent or Color3.fromRGB(40, 45, 60)
+		local bg = state and t.Accent or t.GlassActive
 		local bgT = state and 0.1 or 0.5
 		local pos = state and UDim2.new(1, -19, 0.5, -8) or UDim2.new(0, 3, 0.5, -8)
 		local sc = state and t.AccentGlow or t.Border
+		local tc = thumbColor(state)
 
 		if animate then
 			Tween.Play(track, "Fast", { BackgroundColor3 = bg, BackgroundTransparency = bgT })
 			Tween.Play(trackStroke, "Fast", { Color = sc })
-			Tween.Play(thumb, "Fast", { Position = pos })
+			Tween.Play(thumb, "Fast", { Position = pos, BackgroundColor3 = tc })
 		else
 			track.BackgroundColor3 = bg
 			track.BackgroundTransparency = bgT
 			trackStroke.Color = sc
 			thumb.Position = pos
+			thumb.BackgroundColor3 = tc
 		end
 	end
 

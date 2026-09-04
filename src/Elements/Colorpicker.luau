@@ -40,7 +40,7 @@ function Colorpicker.New(parent: Instance, config: {
 		Parent = parent
 	})
 
-	Creator.Round(container, 8)
+	Creator.Round(container, 6)
 	local stroke = Creator.Stroke(container, currentTheme.Border, currentTheme.BorderTransparency, 1)
 
 	local header = Creator.New("TextButton", {
@@ -142,14 +142,14 @@ function Colorpicker.New(parent: Instance, config: {
 		BackgroundTransparency = 0.4,
 		Position = UDim2.new(0, 0, 0, 108),
 		Size = UDim2.new(1, 0, 0, 24),
-		Font = currentTheme.FontMedium,
+		Font = currentTheme.FontMono,
 		Text = "#" .. currentColor:ToHex():upper(),
 		TextColor3 = currentTheme.TextPrimary,
 		TextSize = 12,
 		ClearTextOnFocus = false,
 		Parent = pickerBody
 	})
-	Creator.Round(hexBox, 4)
+	Creator.Round(hexBox, 5)
 	Creator.Stroke(hexBox, currentTheme.Border, 0.8, 1)
 
 	local function updateColor(newColor: Color3, triggerCallback: boolean?)

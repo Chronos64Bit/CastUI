@@ -56,7 +56,7 @@ function Notification.Notify(config: {
 		Parent = notifContainer
 	})
 
-	Creator.Round(toast, 8)
+	Creator.Round(toast, 6)
 	local stroke = Creator.Stroke(toast, currentTheme.Border, currentTheme.BorderTransparency, 1)
 
 	local iconOffset = 12
@@ -160,7 +160,7 @@ function Notification.Notify(config: {
 				AutoButtonColor = false,
 				Parent = actionHolder
 			})
-			Creator.Round(actBtn, 4)
+			Creator.Round(actBtn, 5)
 			Creator.Stroke(actBtn, currentTheme.Border, 0.8, 1)
 
 			actBtn.MouseButton1Click:Connect(function()

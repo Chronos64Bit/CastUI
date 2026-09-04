@@ -27,7 +27,7 @@ function Button.New(parent: Instance, cfg: {
 		Parent = parent
 	})
 
-	Creator.Round(btn, 8)
+	Creator.Round(btn, 6)
 	local stroke = Creator.Stroke(btn, theme.Border, theme.BorderTransparency, 1)
 	Creator.Padding(btn, 0, 0, 12, 12)
 

@@ -30,7 +30,7 @@ function Input.New(parent: Instance, cfg: {
 		Parent = parent
 	})
 
-	Creator.Round(root, 8)
+	Creator.Round(root, 6)
 	local stroke = Creator.Stroke(root, theme.Border, theme.BorderTransparency, 1)
 	Creator.Padding(root, 0, 0, 12, 12)
 
@@ -64,7 +64,7 @@ function Input.New(parent: Instance, cfg: {
 		Parent = root
 	})
 
-	Creator.Round(box, 6)
+	Creator.Round(box, 5)
 	local boxStroke = Creator.Stroke(box, theme.Border, 0.8, 1)
 	Creator.Padding(box, 0, 0, 8, 8)
 

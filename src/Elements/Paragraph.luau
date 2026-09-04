@@ -16,7 +16,7 @@ function Paragraph.New(parent: Instance, cfg: { Title: string, Content: string }
 		Parent = parent
 	})
 
-	Creator.Round(card, 8)
+	Creator.Round(card, 6)
 	local stroke = Creator.Stroke(card, theme.Border, theme.BorderTransparency, 1)
 	Creator.Padding(card, 10, 10, 12, 12)
 

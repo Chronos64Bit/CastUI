@@ -37,7 +37,7 @@ function Dropdown.New(parent: Instance, cfg: {
 		Parent = parent
 	})
 
-	Creator.Round(root, 8)
+	Creator.Round(root, 6)
 	local stroke = Creator.Stroke(root, theme.Border, theme.BorderTransparency, 1)
 
 	local header = Creator.New("TextButton", {
@@ -141,7 +141,7 @@ function Dropdown.New(parent: Instance, cfg: {
 				AutoButtonColor = false,
 				Parent = list
 			})
-			Creator.Round(ob, 6)
+			Creator.Round(ob, 5)
 
 			local checkmark = Creator.New("ImageLabel", {
 				Name = "Check",

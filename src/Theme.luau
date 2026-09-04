@@ -5,32 +5,33 @@ Theme.Presets = {
 	["Monochrome (Default)"] = {
 		Background = Color3.fromRGB(10, 10, 11),
 		BackgroundTransparency = 0.12,
-		GlassPanel = Color3.fromRGB(20, 20, 22),
+		GlassPanel = Color3.fromRGB(22, 22, 24),
 		GlassPanelTransparency = 0.35,
-		GlassHover = Color3.fromRGB(32, 32, 35),
-		GlassActive = Color3.fromRGB(45, 45, 49),
+		GlassHover = Color3.fromRGB(35, 35, 38),
+		GlassActive = Color3.fromRGB(46, 46, 50),
 
 		Border = Color3.fromRGB(255, 255, 255),
 		BorderTransparency = 0.88,
-		BorderFocus = Color3.fromRGB(235, 235, 240),
+		BorderFocus = Color3.fromRGB(237, 237, 239),
 		BorderFocusTransparency = 0.4,
 
-		Accent = Color3.fromRGB(235, 235, 240),
-		AccentGlow = Color3.fromRGB(200, 200, 208),
-		AccentSecondary = Color3.fromRGB(140, 140, 148),
+		Accent = Color3.fromRGB(237, 237, 239),
+		AccentGlow = Color3.fromRGB(200, 200, 205),
+		AccentSecondary = Color3.fromRGB(140, 140, 147),
 
-		TextPrimary = Color3.fromRGB(245, 245, 247),
-		TextSecondary = Color3.fromRGB(150, 150, 158),
-		TextMuted = Color3.fromRGB(95, 95, 102),
+		TextPrimary = Color3.fromRGB(237, 237, 239),
+		TextSecondary = Color3.fromRGB(140, 140, 147),
+		TextMuted = Color3.fromRGB(74, 74, 79),
 
 		Success = Color3.fromRGB(110, 200, 150),
 		Danger = Color3.fromRGB(220, 100, 100),
 		Warning = Color3.fromRGB(210, 180, 120),
 
-		CornerRadius = 8,
+		CornerRadius = 10,
 		FontRegular = Enum.Font.Gotham,
 		FontMedium = Enum.Font.GothamMedium,
 		FontBold = Enum.Font.GothamBold,
+		FontMono = Enum.Font.RobotoMono,
 	},
 
 	["Midnight Violet"] = {
@@ -57,6 +58,7 @@ Theme.Presets = {
 		FontRegular = Enum.Font.Gotham,
 		FontMedium = Enum.Font.GothamMedium,
 		FontBold = Enum.Font.GothamBold,
+		FontMono = Enum.Font.RobotoMono,
 	},
 
 	["Emerald Frost"] = {
@@ -83,6 +85,7 @@ Theme.Presets = {
 		FontRegular = Enum.Font.Gotham,
 		FontMedium = Enum.Font.GothamMedium,
 		FontBold = Enum.Font.GothamBold,
+		FontMono = Enum.Font.RobotoMono,
 	}
 }
 

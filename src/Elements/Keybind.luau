@@ -41,7 +41,7 @@ function Keybind.New(parent: Instance, cfg: {
 		Parent = parent
 	})
 
-	Creator.Round(root, 8)
+	Creator.Round(root, 6)
 	local stroke = Creator.Stroke(root, theme.Border, theme.BorderTransparency, 1)
 	Creator.Padding(root, 0, 0, 12, 12)
 
@@ -64,14 +64,14 @@ function Keybind.New(parent: Instance, cfg: {
 		BackgroundTransparency = 0.4,
 		Position = UDim2.new(1, -90, 0.5, -12),
 		Size = UDim2.new(0, 90, 0, 24),
-		Font = theme.FontMedium,
+		Font = theme.FontMono,
 		Text = key.Name,
 		TextColor3 = theme.Accent,
 		TextSize = 12,
 		AutoButtonColor = false,
 		Parent = root
 	})
-	Creator.Round(bindBtn, 6)
+	Creator.Round(bindBtn, 5)
 	Creator.Stroke(bindBtn, theme.Border, 0.8, 1)
 
 	local function setKey(k: Enum.KeyCode)

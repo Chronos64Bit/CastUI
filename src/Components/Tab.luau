@@ -42,7 +42,7 @@ function Tab.New(sidebarParent: Instance, contentParent: Instance, config: {
 		Parent = sidebarParent
 	})
 
-	Creator.Round(tabBtn, 8)
+	Creator.Round(tabBtn, 6)
 	Creator.Padding(tabBtn, 0, 0, 10, 10)
 
 	-- Active Left Indicator Pill

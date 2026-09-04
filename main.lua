@@ -248,32 +248,33 @@ return (function()
 			["Monochrome (Default)"] = {
 				Background = Color3.fromRGB(10, 10, 11),
 				BackgroundTransparency = 0.12,
-				GlassPanel = Color3.fromRGB(20, 20, 22),
+				GlassPanel = Color3.fromRGB(22, 22, 24),
 				GlassPanelTransparency = 0.35,
-				GlassHover = Color3.fromRGB(32, 32, 35),
-				GlassActive = Color3.fromRGB(45, 45, 49),
+				GlassHover = Color3.fromRGB(35, 35, 38),
+				GlassActive = Color3.fromRGB(46, 46, 50),
 		
 				Border = Color3.fromRGB(255, 255, 255),
 				BorderTransparency = 0.88,
-				BorderFocus = Color3.fromRGB(235, 235, 240),
+				BorderFocus = Color3.fromRGB(237, 237, 239),
 				BorderFocusTransparency = 0.4,
 		
-				Accent = Color3.fromRGB(235, 235, 240),
-				AccentGlow = Color3.fromRGB(200, 200, 208),
-				AccentSecondary = Color3.fromRGB(140, 140, 148),
+				Accent = Color3.fromRGB(237, 237, 239),
+				AccentGlow = Color3.fromRGB(200, 200, 205),
+				AccentSecondary = Color3.fromRGB(140, 140, 147),
 		
-				TextPrimary = Color3.fromRGB(245, 245, 247),
-				TextSecondary = Color3.fromRGB(150, 150, 158),
-				TextMuted = Color3.fromRGB(95, 95, 102),
+				TextPrimary = Color3.fromRGB(237, 237, 239),
+				TextSecondary = Color3.fromRGB(140, 140, 147),
+				TextMuted = Color3.fromRGB(74, 74, 79),
 		
 				Success = Color3.fromRGB(110, 200, 150),
 				Danger = Color3.fromRGB(220, 100, 100),
 				Warning = Color3.fromRGB(210, 180, 120),
 		
-				CornerRadius = 8,
+				CornerRadius = 10,
 				FontRegular = Enum.Font.Gotham,
 				FontMedium = Enum.Font.GothamMedium,
 				FontBold = Enum.Font.GothamBold,
+				FontMono = Enum.Font.RobotoMono,
 			},
 		
 			["Midnight Violet"] = {
@@ -300,6 +301,7 @@ return (function()
 				FontRegular = Enum.Font.Gotham,
 				FontMedium = Enum.Font.GothamMedium,
 				FontBold = Enum.Font.GothamBold,
+				FontMono = Enum.Font.RobotoMono,
 			},
 		
 			["Emerald Frost"] = {
@@ -326,6 +328,7 @@ return (function()
 				FontRegular = Enum.Font.Gotham,
 				FontMedium = Enum.Font.GothamMedium,
 				FontBold = Enum.Font.GothamBold,
+				FontMono = Enum.Font.RobotoMono,
 			}
 		}
 		
@@ -425,7 +428,7 @@ return (function()
 				Parent = overlay
 			})
 		
-			Creator.Round(modal, 12)
+			Creator.Round(modal, 10)
 			local stroke = Creator.Stroke(modal, currentTheme.Border, currentTheme.BorderTransparency, 1)
 			Creator.Padding(modal, 16, 16, 18, 18)
 		
@@ -473,7 +476,7 @@ return (function()
 				ClearTextOnFocus = false,
 				Parent = modal
 			})
-			Creator.Round(keyBox, 8)
+			Creator.Round(keyBox, 5)
 			local boxStroke = Creator.Stroke(keyBox, currentTheme.Border, 0.8, 1)
 		
 			local errorLabel = Creator.New("TextLabel", {
@@ -511,7 +514,7 @@ return (function()
 				AutoButtonColor = false,
 				Parent = btnContainer
 			})
-			Creator.Round(verifyBtn, 8)
+			Creator.Round(verifyBtn, 5)
 		
 			if config.GetKeyLink then
 				local getBtn = Creator.New("TextButton", {
@@ -527,7 +530,7 @@ return (function()
 					AutoButtonColor = false,
 					Parent = btnContainer
 				})
-				Creator.Round(getBtn, 8)
+				Creator.Round(getBtn, 5)
 				Creator.Stroke(getBtn, currentTheme.Border, 0.8, 1)
 		
 				getBtn.MouseButton1Click:Connect(function()
@@ -630,7 +633,7 @@ return (function()
 				Parent = notifContainer
 			})
 		
-			Creator.Round(toast, 8)
+			Creator.Round(toast, 6)
 			local stroke = Creator.Stroke(toast, currentTheme.Border, currentTheme.BorderTransparency, 1)
 		
 			local iconOffset = 12
@@ -734,7 +737,7 @@ return (function()
 						AutoButtonColor = false,
 						Parent = actionHolder
 					})
-					Creator.Round(actBtn, 4)
+					Creator.Round(actBtn, 5)
 					Creator.Stroke(actBtn, currentTheme.Border, 0.8, 1)
 		
 					actBtn.MouseButton1Click:Connect(function()
@@ -804,7 +807,7 @@ return (function()
 				Parent = sidebarParent
 			})
 		
-			Creator.Round(tabBtn, 8)
+			Creator.Round(tabBtn, 6)
 			Creator.Padding(tabBtn, 0, 0, 10, 10)
 		
 			-- Active Left Indicator Pill
@@ -1021,7 +1024,7 @@ return (function()
 				Parent = parentGui
 			})
 		
-			Creator.Round(mainFrame, 12)
+			Creator.Round(mainFrame, 10)
 			local windowStroke = Creator.Stroke(mainFrame, currentTheme.Border, currentTheme.BorderTransparency, 1)
 		
 			-- Ambient Glow Behind Glass
@@ -1046,7 +1049,7 @@ return (function()
 				Size = UDim2.new(1, 0, 0, 46),
 				Parent = mainFrame
 			})
-			Creator.Round(topBar, 12)
+			Creator.Round(topBar, 10)
 		
 			Drag.MakeDraggable(topBar, mainFrame)
 		
@@ -1105,7 +1108,7 @@ return (function()
 					AutoButtonColor = false,
 					Parent = controlsHolder
 				})
-				Creator.Round(btn, 6)
+				Creator.Round(btn, 5)
 		
 				btn.MouseEnter:Connect(function()
 					Tween.Play(btn, "Fast", { BackgroundTransparency = 0.4, TextColor3 = Theme.Current.TextPrimary })
@@ -1139,7 +1142,7 @@ return (function()
 				Size = UDim2.new(0, 160, 1, -22),
 				Parent = bodyFrame
 			})
-			Creator.Round(sidebar, 8)
+			Creator.Round(sidebar, 6)
 			local sidebarStroke = Creator.Stroke(sidebar, currentTheme.Border, 0.9, 1)
 		
 			local sidebarScroll = Creator.New("ScrollingFrame", {
@@ -1181,7 +1184,7 @@ return (function()
 				ZIndex = 20,
 				Parent = mainFrame
 			})
-			Creator.Round(splash, 12)
+			Creator.Round(splash, 10)
 		
 			local splashTitle = Creator.New("TextLabel", {
 				Name = "SplashTitle",
@@ -1421,7 +1424,7 @@ return (function()
 				Parent = parent
 			})
 		
-			Creator.Round(btn, 8)
+			Creator.Round(btn, 6)
 			local stroke = Creator.Stroke(btn, theme.Border, theme.BorderTransparency, 1)
 			Creator.Padding(btn, 0, 0, 12, 12)
 		
@@ -1569,7 +1572,7 @@ return (function()
 				Parent = parent
 			})
 		
-			Creator.Round(container, 8)
+			Creator.Round(container, 6)
 			local stroke = Creator.Stroke(container, currentTheme.Border, currentTheme.BorderTransparency, 1)
 		
 			local header = Creator.New("TextButton", {
@@ -1671,14 +1674,14 @@ return (function()
 				BackgroundTransparency = 0.4,
 				Position = UDim2.new(0, 0, 0, 108),
 				Size = UDim2.new(1, 0, 0, 24),
-				Font = currentTheme.FontMedium,
+				Font = currentTheme.FontMono,
 				Text = "#" .. currentColor:ToHex():upper(),
 				TextColor3 = currentTheme.TextPrimary,
 				TextSize = 12,
 				ClearTextOnFocus = false,
 				Parent = pickerBody
 			})
-			Creator.Round(hexBox, 4)
+			Creator.Round(hexBox, 5)
 			Creator.Stroke(hexBox, currentTheme.Border, 0.8, 1)
 		
 			local function updateColor(newColor: Color3, triggerCallback: boolean?)
@@ -1837,7 +1840,7 @@ return (function()
 				Parent = parent
 			})
 		
-			Creator.Round(root, 8)
+			Creator.Round(root, 6)
 			local stroke = Creator.Stroke(root, theme.Border, theme.BorderTransparency, 1)
 		
 			local header = Creator.New("TextButton", {
@@ -1941,7 +1944,7 @@ return (function()
 						AutoButtonColor = false,
 						Parent = list
 					})
-					Creator.Round(ob, 6)
+					Creator.Round(ob, 5)
 		
 					local checkmark = Creator.New("ImageLabel", {
 						Name = "Check",
@@ -2061,7 +2064,7 @@ return (function()
 				Parent = parent
 			})
 		
-			Creator.Round(root, 8)
+			Creator.Round(root, 6)
 			local stroke = Creator.Stroke(root, theme.Border, theme.BorderTransparency, 1)
 			Creator.Padding(root, 0, 0, 12, 12)
 		
@@ -2095,7 +2098,7 @@ return (function()
 				Parent = root
 			})
 		
-			Creator.Round(box, 6)
+			Creator.Round(box, 5)
 			local boxStroke = Creator.Stroke(box, theme.Border, 0.8, 1)
 			Creator.Padding(box, 0, 0, 8, 8)
 		
@@ -2196,7 +2199,7 @@ return (function()
 				Parent = parent
 			})
 		
-			Creator.Round(root, 8)
+			Creator.Round(root, 6)
 			local stroke = Creator.Stroke(root, theme.Border, theme.BorderTransparency, 1)
 			Creator.Padding(root, 0, 0, 12, 12)
 		
@@ -2219,14 +2222,14 @@ return (function()
 				BackgroundTransparency = 0.4,
 				Position = UDim2.new(1, -90, 0.5, -12),
 				Size = UDim2.new(0, 90, 0, 24),
-				Font = theme.FontMedium,
+				Font = theme.FontMono,
 				Text = key.Name,
 				TextColor3 = theme.Accent,
 				TextSize = 12,
 				AutoButtonColor = false,
 				Parent = root
 			})
-			Creator.Round(bindBtn, 6)
+			Creator.Round(bindBtn, 5)
 			Creator.Stroke(bindBtn, theme.Border, 0.8, 1)
 		
 			local function setKey(k: Enum.KeyCode)
@@ -2311,7 +2314,7 @@ return (function()
 				Parent = parent
 			})
 		
-			Creator.Round(card, 8)
+			Creator.Round(card, 6)
 			local stroke = Creator.Stroke(card, theme.Border, theme.BorderTransparency, 1)
 			Creator.Padding(card, 10, 10, 12, 12)
 		
@@ -2461,7 +2464,7 @@ return (function()
 				Parent = parent
 			})
 		
-			Creator.Round(root, 8)
+			Creator.Round(root, 6)
 			local stroke = Creator.Stroke(root, theme.Border, theme.BorderTransparency, 1)
 			Creator.Padding(root, 8, 8, 12, 12)
 		
@@ -2484,19 +2487,19 @@ return (function()
 				BackgroundTransparency = 0.4,
 				Position = UDim2.new(1, -64, 0, 0),
 				Size = UDim2.new(0, 64, 0, 20),
-				Font = theme.FontMedium,
+				Font = theme.FontMono,
 				Text = tostring(value) .. suffix,
 				TextColor3 = theme.Accent,
 				TextSize = 12,
 				ClearTextOnFocus = false,
 				Parent = root
 			})
-			Creator.Round(valBox, 4)
+			Creator.Round(valBox, 5)
 			Creator.Stroke(valBox, theme.Border, 0.8, 1)
 		
 			local barBg = Creator.New("TextButton", {
 				Name = "Bar",
-				BackgroundColor3 = Color3.fromRGB(30, 35, 48),
+				BackgroundColor3 = theme.GlassActive,
 				BackgroundTransparency = 0.3,
 				BorderSizePixel = 0,
 				Position = UDim2.new(0, 0, 1, -10),
@@ -2516,15 +2519,17 @@ return (function()
 			})
 			Creator.Round(fill, 3)
 		
+			-- Dark knob so it stays visible against the light monochrome accent fill
 			local knob = Creator.New("Frame", {
 				Name = "Knob",
-				BackgroundColor3 = Color3.fromRGB(255, 255, 255),
+				BackgroundColor3 = theme.Background,
 				BorderSizePixel = 0,
 				Position = UDim2.new(1, -5, 0.5, -5),
 				Size = UDim2.new(0, 10, 0, 10),
 				Parent = fill
 			})
 			Creator.Round(knob, 5)
+			local knobStroke = Creator.Stroke(knob, theme.Accent, 0, 1.5)
 		
 			local function snap(raw: number): number
 				return math.clamp(math.floor((raw - min) / step + 0.5) * step + min, min, max)
@@ -2590,7 +2595,10 @@ return (function()
 				stroke.Transparency = t.BorderTransparency
 				title.TextColor3 = t.TextPrimary
 				valBox.TextColor3 = t.Accent
+				barBg.BackgroundColor3 = t.GlassActive
 				fill.BackgroundColor3 = t.Accent
+				knob.BackgroundColor3 = t.Background
+				knobStroke.Color = t.Accent
 			end)
 		
 			return {
@@ -2638,7 +2646,7 @@ return (function()
 				Parent = parent
 			})
 		
-			Creator.Round(btn, 8)
+			Creator.Round(btn, 6)
 			local stroke = Creator.Stroke(btn, theme.Border, theme.BorderTransparency, 1)
 			Creator.Padding(btn, 0, 0, 12, 12)
 		
@@ -2671,9 +2679,13 @@ return (function()
 				})
 			end
 		
+			local function thumbColor(s: boolean): Color3
+				return s and Color3.fromRGB(15, 15, 16) or Color3.fromRGB(237, 237, 239)
+			end
+		
 			local track = Creator.New("Frame", {
 				Name = "Track",
-				BackgroundColor3 = state and theme.Accent or Color3.fromRGB(40, 45, 60),
+				BackgroundColor3 = state and theme.Accent or theme.GlassActive,
 				BackgroundTransparency = state and 0.1 or 0.5,
 				BorderSizePixel = 0,
 				Position = UDim2.new(1, -42, 0.5, -11),
@@ -2685,7 +2697,7 @@ return (function()
 		
 			local thumb = Creator.New("Frame", {
 				Name = "Thumb",
-				BackgroundColor3 = Color3.fromRGB(255, 255, 255),
+				BackgroundColor3 = thumbColor(state),
 				BorderSizePixel = 0,
 				Position = state and UDim2.new(1, -19, 0.5, -8) or UDim2.new(0, 3, 0.5, -8),
 				Size = UDim2.new(0, 16, 0, 16),
@@ -2695,20 +2707,22 @@ return (function()
 		
 			local function refresh(animate: boolean)
 				local t = Theme.Current
-				local bg = state and t.Accent or Color3.fromRGB(40, 45, 60)
+				local bg = state and t.Accent or t.GlassActive
 				local bgT = state and 0.1 or 0.5
 				local pos = state and UDim2.new(1, -19, 0.5, -8) or UDim2.new(0, 3, 0.5, -8)
 				local sc = state and t.AccentGlow or t.Border
+				local tc = thumbColor(state)
 		
 				if animate then
 					Tween.Play(track, "Fast", { BackgroundColor3 = bg, BackgroundTransparency = bgT })
 					Tween.Play(trackStroke, "Fast", { Color = sc })
-					Tween.Play(thumb, "Fast", { Position = pos })
+					Tween.Play(thumb, "Fast", { Position = pos, BackgroundColor3 = tc })
 				else
 					track.BackgroundColor3 = bg
 					track.BackgroundTransparency = bgT
 					trackStroke.Color = sc
 					thumb.Position = pos
+					thumb.BackgroundColor3 = tc
 				end
 			end
 		

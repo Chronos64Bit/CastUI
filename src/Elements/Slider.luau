@@ -37,7 +37,7 @@ function Slider.New(parent: Instance, cfg: {
 		Parent = parent
 	})
 
-	Creator.Round(root, 8)
+	Creator.Round(root, 6)
 	local stroke = Creator.Stroke(root, theme.Border, theme.BorderTransparency, 1)
 	Creator.Padding(root, 8, 8, 12, 12)
 
@@ -60,19 +60,19 @@ function Slider.New(parent: Instance, cfg: {
 		BackgroundTransparency = 0.4,
 		Position = UDim2.new(1, -64, 0, 0),
 		Size = UDim2.new(0, 64, 0, 20),
-		Font = theme.FontMedium,
+		Font = theme.FontMono,
 		Text = tostring(value) .. suffix,
 		TextColor3 = theme.Accent,
 		TextSize = 12,
 		ClearTextOnFocus = false,
 		Parent = root
 	})
-	Creator.Round(valBox, 4)
+	Creator.Round(valBox, 5)
 	Creator.Stroke(valBox, theme.Border, 0.8, 1)
 
 	local barBg = Creator.New("TextButton", {
 		Name = "Bar",
-		BackgroundColor3 = Color3.fromRGB(30, 35, 48),
+		BackgroundColor3 = theme.GlassActive,
 		BackgroundTransparency = 0.3,
 		BorderSizePixel = 0,
 		Position = UDim2.new(0, 0, 1, -10),
@@ -92,15 +92,17 @@ function Slider.New(parent: Instance, cfg: {
 	})
 	Creator.Round(fill, 3)
 
+	-- Dark knob so it stays visible against the light monochrome accent fill
 	local knob = Creator.New("Frame", {
 		Name = "Knob",
-		BackgroundColor3 = Color3.fromRGB(255, 255, 255),
+		BackgroundColor3 = theme.Background,
 		BorderSizePixel = 0,
 		Position = UDim2.new(1, -5, 0.5, -5),
 		Size = UDim2.new(0, 10, 0, 10),
 		Parent = fill
 	})
 	Creator.Round(knob, 5)
+	local knobStroke = Creator.Stroke(knob, theme.Accent, 0, 1.5)
 
 	local function snap(raw: number): number
 		return math.clamp(math.floor((raw - min) / step + 0.5) * step + min, min, max)
@@ -166,7 +168,10 @@ function Slider.New(parent: Instance, cfg: {
 		stroke.Transparency = t.BorderTransparency
 		title.TextColor3 = t.TextPrimary
 		valBox.TextColor3 = t.Accent
+		barBg.BackgroundColor3 = t.GlassActive
 		fill.BackgroundColor3 = t.Accent
+		knob.BackgroundColor3 = t.Background
+		knobStroke.Color = t.Accent
 	end)
 
 	return {

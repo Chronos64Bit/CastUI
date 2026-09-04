@@ -46,7 +46,7 @@ function Window.New(parentGui: Instance, config: {
 		Parent = parentGui
 	})
 
-	Creator.Round(mainFrame, 12)
+	Creator.Round(mainFrame, 10)
 	local windowStroke = Creator.Stroke(mainFrame, currentTheme.Border, currentTheme.BorderTransparency, 1)
 
 	-- Ambient Glow Behind Glass
@@ -71,7 +71,7 @@ function Window.New(parentGui: Instance, config: {
 		Size = UDim2.new(1, 0, 0, 46),
 		Parent = mainFrame
 	})
-	Creator.Round(topBar, 12)
+	Creator.Round(topBar, 10)
 
 	Drag.MakeDraggable(topBar, mainFrame)
 
@@ -130,7 +130,7 @@ function Window.New(parentGui: Instance, config: {
 			AutoButtonColor = false,
 			Parent = controlsHolder
 		})
-		Creator.Round(btn, 6)
+		Creator.Round(btn, 5)
 
 		btn.MouseEnter:Connect(function()
 			Tween.Play(btn, "Fast", { BackgroundTransparency = 0.4, TextColor3 = Theme.Current.TextPrimary })
@@ -164,7 +164,7 @@ function Window.New(parentGui: Instance, config: {
 		Size = UDim2.new(0, 160, 1, -22),
 		Parent = bodyFrame
 	})
-	Creator.Round(sidebar, 8)
+	Creator.Round(sidebar, 6)
 	local sidebarStroke = Creator.Stroke(sidebar, currentTheme.Border, 0.9, 1)
 
 	local sidebarScroll = Creator.New("ScrollingFrame", {
@@ -206,7 +206,7 @@ function Window.New(parentGui: Instance, config: {
 		ZIndex = 20,
 		Parent = mainFrame
 	})
-	Creator.Round(splash, 12)
+	Creator.Round(splash, 10)
 
 	local splashTitle = Creator.New("TextLabel", {
 		Name = "SplashTitle",

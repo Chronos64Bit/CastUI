@@ -1117,8 +1117,8 @@ return (function()
 				return btn
 			end
 		
-			local minimizeBtn = makeControlButton("Minimize", "\226\128\147", 0) -- –
-			local closeBtn = makeControlButton("Close", "\226\156\149", 30) -- ✕
+			local minimizeBtn = makeControlButton("Minimize", "-", 0)
+			local closeBtn = makeControlButton("Close", "X", 30)
 		
 			-- Body Area
 			local bodyFrame = Creator.New("Frame", {

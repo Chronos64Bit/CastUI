@@ -406,11 +406,10 @@ return (function()
 				end
 			end
 		
-			-- Backdrop Glass Blur Overlay
+			-- Fullscreen click-catcher (no dimming, keeps the game visible behind the modal)
 			local overlay = Creator.New("Frame", {
 				Name = "KeyOverlay",
-				BackgroundColor3 = Color3.fromRGB(0, 0, 0),
-				BackgroundTransparency = 0.5,
+				BackgroundTransparency = 1,
 				Size = UDim2.new(1, 0, 1, 0),
 				Parent = parentGui
 			})
